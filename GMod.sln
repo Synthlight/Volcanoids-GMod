@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMod", "GMod.csproj", "{688DCFCE-08E0-45EA-B2D6-E4BD8C399EA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{688DCFCE-08E0-45EA-B2D6-E4BD8C399EA7}.Debug|x64.ActiveCfg = Debug|x64
+		{688DCFCE-08E0-45EA-B2D6-E4BD8C399EA7}.Debug|x64.Build.0 = Debug|x64
+		{688DCFCE-08E0-45EA-B2D6-E4BD8C399EA7}.Release|x64.ActiveCfg = Release|x64
+		{688DCFCE-08E0-45EA-B2D6-E4BD8C399EA7}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9ABA1427-09D0-474F-A790-98A260A4E6A1}
+	EndGlobalSection
+EndGlobal

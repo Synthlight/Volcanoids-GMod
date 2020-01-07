@@ -46,6 +46,10 @@
     <Reference Include="BepInEx.Harmony">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\BepInEx\core\BepInEx.Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="Rock.Unity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Rock.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GMod.cs" />
+    <Compile Include="Patches\TrainUpgradesPatch.cs" />
+    <Compile Include="Patches\MapTravelUiPatch.cs" />
     <Compile Include="Patches\TrainCoreAccessUseComponentPatch.cs" />
     <Compile Include="Patches\StaminaPatch.cs" />
     <Compile Include="Patches\TrainCorePatch.cs" />

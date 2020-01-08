@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using HarmonyLib;
 
 namespace GMod.Patches {
@@ -11,8 +12,13 @@ namespace GMod.Patches {
 
         [HarmonyPrefix]
         public static bool Prefix(ref int __result, ref TrainUpgrades ___m_upgrades) {
-            __result = ___m_upgrades.Core.SlotCount * 2;
-            return false;
+            try {
+                __result = ___m_upgrades.Core.SlotCount * 2;
+
+                return false;
+            } catch (Exception) {
+                return true;
+            }
         }
     }
 }

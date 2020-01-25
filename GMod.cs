@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using System.Collections.Generic;
+using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 
@@ -7,6 +8,24 @@ namespace GMod {
     public class GMod : BaseUnityPlugin {
         private const string UUID = "com.gmod";
         private static ManualLogSource logSource;
+
+        private static Dictionary<string, int> itemSortOrders = new Dictionary<string, int>();
+
+        static GMod() {
+            var i = 0;
+            itemSortOrders.Add("Revolver", i++);
+            itemSortOrders.Add("Revolver ammo", i++);
+            itemSortOrders.Add("Medkit", i++);
+            itemSortOrders.Add("Module repair kit", i++);
+        }
+
+        public static int GetItemSortOrder(string item) {
+            if (itemSortOrders.ContainsKey(item)) {
+                return itemSortOrders[item];
+            } else {
+                return 9999;
+            }
+        }
 
         public void Awake() {
             logSource = Logger;

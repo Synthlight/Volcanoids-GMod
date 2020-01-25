@@ -74,6 +74,7 @@
     <Compile Include="Patches\TrainCoreAccessUseComponentPatch.cs" />
     <Compile Include="Patches\StaminaPatch.cs" />
     <Compile Include="Patches\TrainCorePatch.cs" />
+    <Compile Include="Patches\InventoryUtilsPatch.cs" />
     <Compile Include="Patches\WeaponReloaderAmmoPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

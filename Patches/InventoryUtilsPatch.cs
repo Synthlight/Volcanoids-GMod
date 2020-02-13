@@ -57,20 +57,10 @@ namespace GMod.Patches {
         public class InventoryOnlineSlotPanelUiPatch {
             [HarmonyTargetMethod]
             public static MethodBase TargetMethod() {
-                var target = typeof(InventoryOnlineSlotPanelUi).GetMethod("DoCompare", BindingFlags.Public | BindingFlags.Instance);
-                if (target != null) {
-                    return target;
-                }
-
-                //typeof(IComparer<>).MakeGenericType(typeof(InventoryItem))
-                //new Type[] {typeof(InventoryItem), typeof(InventoryItem)};
-
                 return (from interfaceType in typeof(InventoryOnlineSlotPanelUi).GetInterfaces()
                         where interfaceType.Name.Contains("Compare")
                         select typeof(InventoryOnlineSlotPanelUi).GetInterfaceMap(interfaceType)
-                                                                 .InterfaceMethods
-                                                                 .First(info => info.Name == "Compare"))
-                    .FirstOrDefault();
+                                                                 .TargetMethods.First(info => info.Name.Contains("Compare"))).FirstOrDefault();
             }
 
             [HarmonyPrefix]

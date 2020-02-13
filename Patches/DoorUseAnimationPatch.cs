@@ -12,11 +12,11 @@ namespace GMod.Patches {
 
         [HarmonyPostfix]
         public static void Postfix(ref DoorUseAnimation __instance, ref GameObject user) {
-            if (!__instance.IsOpen) return;
+            if (__instance.CurrentState) return;
             var instance = __instance;
             var o = user;
             new Routine(instance, delegate {
-                if (!instance.IsOpen) return;
+                if (!instance.CurrentState) return;
                 TargetMethod().Invoke(instance, new object[] {o});
             }, new WaitForSeconds(2f)).Restart();
             __instance.CloseSoon();

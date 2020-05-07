@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace GMod.Patches {
@@ -13,10 +14,11 @@ namespace GMod.Patches {
         [HarmonyPrefix]
         public static bool Prefix(ref int __result, ref TrainUpgrades ___m_upgrades) {
             try {
-                __result = ___m_upgrades.Core.SlotCount * 2;
+                __result = (int) (___m_upgrades.Core.SlotCount * GMod.config.coreSlotMultiplier);
 
                 return false;
-            } catch (Exception) {
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
                 return true;
             }
         }

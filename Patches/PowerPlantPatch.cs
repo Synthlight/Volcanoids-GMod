@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace GMod.Patches {
@@ -10,9 +12,16 @@ namespace GMod.Patches {
         }
 
         [HarmonyPrefix]
-        public static void Prefix(ref PowerPlant __instance) {
-            __instance.EnergyPerSecond *= 2f;
-            __instance.StopThreshold = 2f;
+        public static bool Prefix(ref PowerPlant __instance) {
+            try {
+                if (GMod.config.disablePowerPlantStopThreshold) {
+                    __instance.EnergyPerSecond *= 2f;
+                    __instance.StopThreshold   =  2f;
+                }
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
+            return true;
         }
     }
 }

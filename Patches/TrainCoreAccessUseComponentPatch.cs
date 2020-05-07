@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace GMod.Patches {
@@ -11,7 +13,11 @@ namespace GMod.Patches {
 
         [HarmonyPrefix]
         public static bool Prefix(ref float ___m_claimHealthLevel) {
-            ___m_claimHealthLevel = 0.9f;
+            try {
+                ___m_claimHealthLevel = GMod.config.shipClaimHealthLevel;
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
             return true;
         }
     }

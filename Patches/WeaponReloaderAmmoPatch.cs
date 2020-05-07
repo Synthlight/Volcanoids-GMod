@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace GMod.Patches {
@@ -11,13 +13,25 @@ namespace GMod.Patches {
 
         [HarmonyPrefix]
         public static bool Prefix() {
-            DevSettings.Instance.InfiniteAmmo = true;
+            try {
+                if (GMod.config.infiniteAmmo) {
+                    DevSettings.Instance.InfiniteAmmo = true;
+                }
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
             return true;
         }
 
         [HarmonyPostfix]
         public static void Postfix() {
-            DevSettings.Instance.InfiniteAmmo = false;
+            try {
+                if (GMod.config.infiniteAmmo) {
+                    DevSettings.Instance.InfiniteAmmo = false;
+                }
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
         }
     }
 
@@ -30,13 +44,25 @@ namespace GMod.Patches {
 
         [HarmonyPrefix]
         public static bool Prefix() {
-            DevSettings.Instance.InfiniteAmmo = true;
+            try {
+                if (GMod.config.infiniteAmmo) {
+                    DevSettings.Instance.InfiniteAmmo = true;
+                }
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
             return true;
         }
 
         [HarmonyPostfix]
         public static void Postfix() {
-            DevSettings.Instance.InfiniteAmmo = false;
+            try {
+                if (GMod.config.infiniteAmmo) {
+                    DevSettings.Instance.InfiniteAmmo = false;
+                }
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
         }
     }
 }

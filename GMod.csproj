@@ -46,6 +46,10 @@
     <Reference Include="BepInEx.Harmony">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\BepInEx\core\BepInEx.Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Rock.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Rock.Base.dll</HintPath>
@@ -70,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GMod.cs" />
     <Compile Include="Patches\PowerPlantPatch.cs" />
@@ -81,7 +86,9 @@
     <Compile Include="Patches\WeaponReloaderAmmoPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)$(TargetName).dll" "C:\SteamLibrary\common\Volcanoids\BepInEx\plugins\"

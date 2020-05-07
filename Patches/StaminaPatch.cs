@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace GMod.Patches {
@@ -11,8 +13,15 @@ namespace GMod.Patches {
 
         [HarmonyPrefix]
         public static bool Prefix(ref float __result, ref float ___m_maxStamina) {
-            __result = ___m_maxStamina;
-            return false;
+            try {
+                if (GMod.config.infiniteStamina) {
+                    __result = ___m_maxStamina;
+                    return false;
+                }
+            } catch (Exception e) {
+                GMod.Log(LogLevel.Error, e.ToString());
+            }
+            return true;
         }
     }
 }

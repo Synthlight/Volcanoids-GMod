@@ -13,6 +13,7 @@ shipClaimHealthLevel | Default: 0.25<br>This is the health level the ship must b
 radarRangeMultiplier | Default: 1.0<br>Multiplier on the radar range of ships. Higher and you can see more deposits/items around on the map.
 infiniteStamina | Default: false<br>Infinite stamina.
 infiniteAmmo | Default: false<br>Infinite ammo.
+inventorySizeMultiplier | Default: 1.0<br>Multiplier on the inventory size. Affects everything with an inventory. (Players, storage modules, chests, etc.)
 
 # Requirements
 - Volcanoids obviously.

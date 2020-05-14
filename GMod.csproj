@@ -78,6 +78,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="GMod.cs" />
     <Compile Include="Patches\PowerPlantPatch.cs" />
+    <Compile Include="Patches\InventoryPatch.cs" />
     <Compile Include="Patches\TrainUpgradesPatch.cs" />
     <Compile Include="Patches\MapTravelUiPatch.cs" />
     <Compile Include="Patches\TrainCoreAccessUseComponentPatch.cs" />

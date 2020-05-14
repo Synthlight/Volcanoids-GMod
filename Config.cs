@@ -7,5 +7,6 @@
         public float radarRangeMultiplier           = 1f;
         public bool  infiniteStamina                = false;
         public bool  infiniteAmmo                   = false;
+        public float inventorySizeMultiplier        = 1f;
     }
 }

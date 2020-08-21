@@ -5,18 +5,18 @@ using HarmonyLib;
 
 namespace GMod.Patches {
     [HarmonyPatch]
-    public class TrainCoreAccessUseComponentPatch {
+    public class TrainCoreAccessPatch {
         [HarmonyTargetMethod]
         public static MethodBase TargetMethod() {
-            return typeof(TrainCoreAccessUseComponent).GetMethod("IsEnabledForUse", BindingFlags.NonPublic | BindingFlags.Instance);
+            return typeof(TrainCoreAccess).GetProperty(nameof(TrainCoreAccess.IsClaimable), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
         }
 
         [HarmonyPrefix]
         public static bool Prefix(ref float ___m_claimHealthLevel) {
             try {
-                ___m_claimHealthLevel = GMod.config.shipClaimHealthLevel;
+                ___m_claimHealthLevel = Plugin.config.shipClaimHealthLevel;
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
             return true;
         }

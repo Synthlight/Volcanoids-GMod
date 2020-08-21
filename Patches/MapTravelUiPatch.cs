@@ -12,8 +12,8 @@ namespace GMod.Patches {
 
         [HarmonyPostfix]
         public static void Postfix() {
-            if (GMod.config.revealFullMapOnTravel) {
-                Player.Local.TryGetComponentSafe<MapMemory>()?.RevealAll();
+            if (Plugin.config.revealFullMapOnTravel) {
+                Island.Current.TryGetComponentSafe<MapMemory>()?.RevealAll();
             }
         }
     }

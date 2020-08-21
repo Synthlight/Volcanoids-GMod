@@ -14,11 +14,11 @@ namespace GMod.Patches {
         [HarmonyPrefix]
         public static bool Prefix(ref int __result, ref int ___m_capacity) {
             try {
-                __result = (int) (___m_capacity * DevSettings.Instance.InventorySizeMultiplier * GMod.config.inventorySizeMultiplier);
+                __result = (int) (___m_capacity * DevSettings.Instance.InventorySizeMultiplier * Plugin.config.inventorySizeMultiplier);
 
                 return false;
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
                 return true;
             }
         }

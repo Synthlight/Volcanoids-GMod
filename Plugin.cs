@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace GMod {
     [BepInPlugin(UUID, "Greg's Mod", "1.0.0.0")]
-    public class GMod : BaseUnityPlugin {
+    public class Plugin : BaseUnityPlugin {
         private const  string          UUID = "com.gmod";
         private static ManualLogSource logSource;
         public static  Config          config = new Config();

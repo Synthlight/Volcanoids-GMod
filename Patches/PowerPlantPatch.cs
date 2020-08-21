@@ -5,21 +5,38 @@ using HarmonyLib;
 
 namespace GMod.Patches {
     [HarmonyPatch]
-    public class PowerPlantPatch {
+    public class PowerPlantPatch1 {
         [HarmonyTargetMethod]
         public static MethodBase TargetMethod() {
             return typeof(PowerPlant).GetMethod("Awake", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
-        [HarmonyPrefix]
-        public static bool Prefix(ref PowerPlant __instance) {
+        [HarmonyPostfix]
+        public static void Postfix(ref PowerPlant __instance) {
             try {
-                if (GMod.config.disablePowerPlantStopThreshold) {
-                    __instance.EnergyPerSecond *= 2f;
-                    __instance.StopThreshold   =  2f;
+                __instance.EnergyPerSecond *= Plugin.config.powerPerSecondMultiplier;
+            } catch (Exception e) {
+                Plugin.Log(LogLevel.Error, e.ToString());
+            }
+        }
+    }
+
+    [HarmonyPatch]
+    public class PowerPlantPatch2 {
+        [HarmonyTargetMethod]
+        public static MethodBase TargetMethod() {
+            return typeof(PowerPlant).GetProperty(nameof(PowerPlant.AutoRegulation), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
+        }
+
+        [HarmonyPrefix]
+        public static bool Prefix(ref bool __result) {
+            try {
+                if (Plugin.config.disablePowerPlantStopThreshold) {
+                    __result = false;
+                    return false;
                 }
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
             return true;
         }

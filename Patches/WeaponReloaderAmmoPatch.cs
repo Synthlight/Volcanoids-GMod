@@ -14,11 +14,11 @@ namespace GMod.Patches {
         [HarmonyPrefix]
         public static bool Prefix() {
             try {
-                if (GMod.config.infiniteAmmo) {
+                if (Plugin.config.infiniteAmmo) {
                     DevSettings.Instance.InfiniteAmmo = true;
                 }
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
             return true;
         }
@@ -26,11 +26,11 @@ namespace GMod.Patches {
         [HarmonyPostfix]
         public static void Postfix() {
             try {
-                if (GMod.config.infiniteAmmo) {
+                if (Plugin.config.infiniteAmmo) {
                     DevSettings.Instance.InfiniteAmmo = false;
                 }
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
         }
     }
@@ -45,11 +45,11 @@ namespace GMod.Patches {
         [HarmonyPrefix]
         public static bool Prefix() {
             try {
-                if (GMod.config.infiniteAmmo) {
+                if (Plugin.config.infiniteAmmo) {
                     DevSettings.Instance.InfiniteAmmo = true;
                 }
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
             return true;
         }
@@ -57,11 +57,11 @@ namespace GMod.Patches {
         [HarmonyPostfix]
         public static void Postfix() {
             try {
-                if (GMod.config.infiniteAmmo) {
+                if (Plugin.config.infiniteAmmo) {
                     DevSettings.Instance.InfiniteAmmo = false;
                 }
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
         }
     }

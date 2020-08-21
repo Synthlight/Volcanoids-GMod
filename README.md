@@ -9,6 +9,7 @@ Option | Description
 coreSlotMultiplier | Default: 1.0<br>Multiplier on the max core slots available.
 revealFullMapOnTravel | Default: false<br>If true, will reveal thw whole map when you use the pilot seat to travel.
 disablePowerPlantStopThreshold | Default: false<br>Power plants by default shut off at 100% energy, and don't turn on till 90% energy. This saves coal.<br>If you want then on all the time, set this to true.
+powerPerSecondMultiplier | Default: 1.0<br>Affects the power output of things. e.g. if a plant outputs +10 power, then a 2.0 value results in +20 power.
 shipClaimHealthLevel | Default: 0.25<br>This is the health level the ship must be at to be claimable.
 radarRangeMultiplier | Default: 1.0<br>Multiplier on the radar range of ships. Higher and you can see more deposits/items around on the map.
 infiniteStamina | Default: false<br>Infinite stamina.

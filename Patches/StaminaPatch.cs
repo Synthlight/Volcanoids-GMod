@@ -14,12 +14,12 @@ namespace GMod.Patches {
         [HarmonyPrefix]
         public static bool Prefix(ref float __result, ref float ___m_maxStamina) {
             try {
-                if (GMod.config.infiniteStamina) {
+                if (Plugin.config.infiniteStamina) {
                     __result = ___m_maxStamina;
                     return false;
                 }
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
             }
             return true;
         }

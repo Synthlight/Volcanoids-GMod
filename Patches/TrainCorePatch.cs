@@ -13,12 +13,14 @@ namespace GMod.Patches {
 
         [HarmonyPrefix]
         public static bool Prefix(ref int __result, ref TrainUpgrades ___m_upgrades) {
+            if (___m_upgrades == null || ___m_upgrades.Core == null) return true;
+
             try {
-                __result = (int) (___m_upgrades.Core.SlotCount * GMod.config.coreSlotMultiplier);
+                __result = (int) (___m_upgrades.Core.SlotCount * Plugin.config.coreSlotMultiplier);
 
                 return false;
             } catch (Exception e) {
-                GMod.Log(LogLevel.Error, e.ToString());
+                Plugin.Log(LogLevel.Error, e.ToString());
                 return true;
             }
         }

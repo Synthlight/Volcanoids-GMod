@@ -15,6 +15,7 @@ radarRangeMultiplier | Default: 1.0<br>Multiplier on the radar range of ships. H
 infiniteStamina | Default: false<br>Infinite stamina.
 infiniteAmmo | Default: false<br>Infinite ammo.
 inventorySizeMultiplier | Default: 1.0<br>Multiplier on the inventory size. Affects everything with an inventory. (Players, storage modules, chests, etc.)
+segmentSizeMultiplier | Default: 1<br>Multiplier on the number of segments an engine will support.<br>**BEWARE** Once added, you can't remove a segment, and you can make them too long for the landing spot.
 
 # Requirements
 - Volcanoids obviously.

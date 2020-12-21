@@ -10,5 +10,6 @@
         public bool  infiniteAmmo                   = false;
         public float inventorySizeMultiplier        = 1f;
         public int   segmentSizeMultiplier          = 1;
+        public bool  disableAimSway                 = false;
     }
 }

@@ -1,13 +1,13 @@
 ﻿# Volcanoids GMod
 This is a mod to configure a few various things in-game.
 
-The first Volcanoids is run with this mod installed, it will create a file called `gmod.json` in `Volcanoids\BepInEx\config`. (Assuming the file didn't existin the first place.)
+The first Volcanoids is run with this mod installed, it will create a file called `gmod.json` in `Volcanoids\BepInEx\config`. (Assuming the file doesn't exist in the first place.)
 
 # Config
 Option | Description
 --- | ---
 coreSlotMultiplier | Default: 1.0<br>Multiplier on the max core slots available.
-revealFullMapOnTravel | Default: false<br>If true, will reveal thw whole map when you use the pilot seat to travel.
+revealFullMapOnTravel | Default: false<br>If true, will reveal the whole map when you use the pilot seat to travel.
 disablePowerPlantStopThreshold | Default: false<br>Power plants by default shut off at 100% energy, and don't turn on till 90% energy. This saves coal.<br>If you want then on all the time, set this to true.
 powerPerSecondMultiplier | Default: 1.0<br>Affects the power output of things. e.g. if a plant outputs +10 power, then a 2.0 value results in +20 power.
 shipClaimHealthLevel | Default: 0.25<br>This is the health level the ship must be at to be claimable.
@@ -17,6 +17,7 @@ infiniteAmmo | Default: false<br>Infinite ammo.
 inventorySizeMultiplier | Default: 1.0<br>Multiplier on the inventory size. Affects everything with an inventory. (Players, storage modules, chests, etc.)
 segmentSizeMultiplier | Default: 1<br>Multiplier on the number of segments an engine will support.<br>**BEWARE** Once added, you can't remove a segment, and you can make them too long for the landing spot.
 disableAimSway | Default: false<br>Disables weapon sway when aiming.
+hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the question mark that appears near the crosshair.
 
 # Requirements
 - Volcanoids obviously.

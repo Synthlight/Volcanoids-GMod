@@ -1,50 +1,56 @@
 ﻿using System;
 using System.IO;
-using BepInEx;
-using BepInEx.Logging;
+using System.Reflection;
 using HarmonyLib;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace GMod {
-    [BepInPlugin(UUID, "Greg's Mod", "1.0.0.0")]
-    public class Plugin : BaseUnityPlugin {
-        private const  string          UUID = "com.gmod";
-        private static ManualLogSource logSource;
-        public static  Config          config = new Config();
+    [UsedImplicitly]
+    public class Plugin : GameMod {
+        public static           Config config      = new Config();
+        private static readonly string CONFIG_FILE = Path.Combine(AssemblyDirectory, "GMod.json");
 
-        public void Awake() {
-            logSource = Logger;
+        public override void Load() {
+            Debug.Log("GMod loaded.");
 
-            Log(LogLevel.Info, "GMod loaded.");
-
-            var configFile = Path.Combine(Paths.ConfigPath, "gmod.json");
+            Assembly.LoadFrom(Path.Combine(AssemblyDirectory, "0Harmony.dll"));
 
             try {
-                if (File.Exists(configFile)) {
-                    var json = File.ReadAllText(configFile);
+                if (File.Exists(CONFIG_FILE)) {
+                    var json = File.ReadAllText(CONFIG_FILE);
                     config = JsonConvert.DeserializeObject<Config>(json);
                 }
             } catch (Exception e) {
-                Log(LogLevel.Error, e.ToString());
+                Debug.LogError(e.ToString());
             }
 
             try {
                 var json = JsonConvert.SerializeObject(config, Formatting.Indented);
-                File.WriteAllText(configFile, json);
+                File.WriteAllText(CONFIG_FILE, json);
             } catch (Exception e) {
-                Log(LogLevel.Error, e.ToString());
+                Debug.LogError(e.ToString());
             }
 
-            var harmony = new Harmony(UUID);
+            var harmony = new Harmony(GUID.Create().ToString());
             harmony.PatchAll();
 
             foreach (var patchedMethod in harmony.GetPatchedMethods()) {
-                Log(LogLevel.Info, $"Patched: {patchedMethod.DeclaringType?.FullName}:{patchedMethod}");
+                Debug.Log($"Patched: {patchedMethod.DeclaringType?.FullName}:{patchedMethod}");
             }
         }
 
-        public static void Log(LogLevel level, string msg) {
-            logSource.Log(level, msg);
+        public override void Unload() {
+        }
+
+        private static string AssemblyDirectory {
+            get {
+                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+                var uri      = new UriBuilder(codeBase);
+                var path     = Uri.UnescapeDataString(uri.Path);
+                return Path.GetDirectoryName(path);
+            }
         }
     }
 }

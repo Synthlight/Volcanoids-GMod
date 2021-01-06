@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Reflection;
-using BepInEx.Logging;
 using HarmonyLib;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace GMod.Patches {
     [HarmonyPatch]
+    [UsedImplicitly]
     public class HelpCrosshairUiPatch {
         [HarmonyTargetMethod]
+        [UsedImplicitly]
         public static MethodBase TargetMethod() {
             return typeof(HelpCrosshairUi).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         [HarmonyPostfix]
+        [UsedImplicitly]
         public static void Postfix(ref GameObject ___m_newHelp, ref GameObject ___m_knownHelp) {
             try {
                 if (Plugin.config.hideHelpIconNearCrosshair) {
@@ -20,7 +23,7 @@ namespace GMod.Patches {
                     ___m_knownHelp.SetActive(false);
                 }
             } catch (Exception e) {
-                Plugin.Log(LogLevel.Error, e.ToString());
+                Debug.LogError(e.ToString());
             }
         }
     }

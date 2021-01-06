@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Reflection;
-using BepInEx.Logging;
 using HarmonyLib;
+using JetBrains.Annotations;
+using UnityEngine;
 
 namespace GMod.Patches {
     [HarmonyPatch]
+    [UsedImplicitly]
     public class StaminaPatch {
         [HarmonyTargetMethod]
+        [UsedImplicitly]
         public static MethodBase TargetMethod() {
             return typeof(Stamina).GetProperty(nameof(Stamina.CurrentStamina), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
         }
 
         [HarmonyPrefix]
+        [UsedImplicitly]
         public static bool Prefix(ref float __result, ref float ___m_maxStamina) {
             try {
                 if (Plugin.config.infiniteStamina) {
@@ -19,7 +23,7 @@ namespace GMod.Patches {
                     return false;
                 }
             } catch (Exception e) {
-                Plugin.Log(LogLevel.Error, e.ToString());
+                Debug.LogError(e.ToString());
             }
             return true;
         }

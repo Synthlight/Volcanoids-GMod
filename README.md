@@ -1,7 +1,7 @@
 ﻿# Volcanoids GMod
 This is a mod to configure a few various things in-game.
 
-The first Volcanoids is run with this mod installed, it will create a file called `gmod.json` in `Volcanoids\BepInEx\config`. (Assuming the file doesn't exist in the first place.)
+The first Volcanoids is run with this mod installed, it will create a file called `GMod.json` in `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`. (Assuming the file doesn't exist in the first place.)
 
 # Config
 Option | Description
@@ -21,11 +21,10 @@ hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the qu
 
 # Requirements
 - Volcanoids obviously.
-- BepInEx: https://github.com/BepInEx/BepInEx (You want the x64 version.)
+- [Harmony](https://github.com/pardeike/Harmony). The dll is included with the release zip for convenience.
 
 # Installation
-- Extract BepInEx to the root Volcanoids folder so `winhttp.dll` is in the same folder as `Volcanoids.exe`.
-- Extract this mod so `GMod.dll` is placed like this: `Volcanoids\BepInEx\plugins\GMod.dll`.
+- Extract the release to the Volcanoids mod folder (`%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`) so `Auto-Sort.dll` is placed like this: `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods\GMod.dll`.
 
 # Un-installation
-BepInEx uses `winhttp.dll` as an injector/loader. Renaming or deleting this file is enough to disable both my mod and the loader.
+- Just remove the dll from `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`.

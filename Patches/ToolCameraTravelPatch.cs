@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Reflection;
-using BepInEx.Logging;
 using HarmonyLib;
+using JetBrains.Annotations;
+using UnityEngine;
 
 namespace GMod.Patches {
     [HarmonyPatch]
+    [UsedImplicitly]
     public class ToolCameraTravelPatch {
         [HarmonyTargetMethod]
+        [UsedImplicitly]
         public static MethodBase TargetMethod() {
             return typeof(ToolCameraTravel).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         [HarmonyPrefix]
+        [UsedImplicitly]
         public static bool Prefix() {
             try {
                 return !Plugin.config.disableAimSway;
             } catch (Exception e) {
-                Plugin.Log(LogLevel.Error, e.ToString());
+                Debug.LogError(e.ToString());
                 return true;
             }
         }

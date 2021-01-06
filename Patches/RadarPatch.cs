@@ -7,26 +7,23 @@ using UnityEngine;
 namespace GMod.Patches {
     [HarmonyPatch]
     [UsedImplicitly]
-    public class TrainCorePatch {
+    public class RadarPatch {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
-            return typeof(TrainCore).GetProperty(nameof(TrainCore.SlotCapacity), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
+            return typeof(TrainUpgrades).GetProperty(nameof(TrainUpgrades.Radar), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
         }
 
         [HarmonyPrefix]
         [UsedImplicitly]
-        public static bool Prefix(ref int __result, ref TrainUpgrades ___m_upgrades) {
-            if (___m_upgrades == null || ___m_upgrades.Core == null) return true;
-
+        public static bool Prefix(ref float __result, ref float ___m_radar) {
             try {
-                __result = (int) (___m_upgrades.Core.SlotCount * Plugin.config.coreSlotMultiplier);
-
+                __result = (int) (___m_radar * Plugin.config.radarRangeMultiplier);
                 return false;
             } catch (Exception e) {
                 Debug.LogError(e.ToString());
-                return true;
             }
+            return true;
         }
     }
 }

@@ -15,6 +15,9 @@
 		<PackageReference Include="Lib.Harmony" Version="2.0.4" GeneratePathProperty="true" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\Base-Mod\Base-Mod.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 		<Reference Include="Assembly-CSharp">
 			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Assembly-CSharp.dll</HintPath>
 			<Private>false</Private>
@@ -45,6 +48,6 @@
 		</Reference>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="SET MonoPath=C:\Program Files\Unity\Editor\Data\MonoBleedingEdge&#xD;&#xA;&quot;%25MonoPath%25\bin\mono.exe&quot; &quot;%25MonoPath%25\lib\mono\4.5\pdb2mdb.exe&quot; &quot;$(TargetPath)&quot;&#xD;&#xA;&#xD;&#xA;copy &quot;$(OutDir)\*&quot; &quot;%25LOCALAPPDATA%25Low\Volcanoid\Volcanoids\Mods\&quot;&#xD;&#xA;copy &quot;$(PkgLib_Harmony)\lib\net45\*&quot; &quot;%25LOCALAPPDATA%25Low\Volcanoid\Volcanoids\Mods\&quot;" />
+		<Exec Command="call $(ProjectDir)..\Base-Mod\Post-Build.bat &quot;$(OutDir)&quot; &quot;$(PkgLib_Harmony)&quot;" />
 	</Target>
 </Project>

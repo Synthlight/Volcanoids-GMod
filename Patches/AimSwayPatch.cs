@@ -7,22 +7,22 @@ using UnityEngine;
 namespace GMod.Patches {
     [HarmonyPatch]
     [UsedImplicitly]
-    public class TrainCoreAccessPatch {
+    public class AimSwayPatch {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
-            return typeof(TrainCoreAccess).GetProperty(nameof(TrainCoreAccess.IsClaimable), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
+            return typeof(ToolCameraTravel).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         [HarmonyPrefix]
         [UsedImplicitly]
-        public static bool Prefix(ref float ___m_claimHealthLevel) {
+        public static bool Prefix() {
             try {
-                ___m_claimHealthLevel = Plugin.config.shipClaimHealthLevel;
+                return !Plugin.config.disableAimSway;
             } catch (Exception e) {
                 Debug.LogError(e.ToString());
+                return true;
             }
-            return true;
         }
     }
 }

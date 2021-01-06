@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMod", "GMod.csproj", "{42FD5634-DAE5-450A-AD8A-9D653DFB4895}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMod", "GMod.csproj", "{42FD5634-DAE5-450A-AD8A-9D653DFB4895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base-Mod", "..\Base-Mod\Base-Mod.csproj", "{A7874B4C-2CBD-4D5B-8390-70238F4085FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{42FD5634-DAE5-450A-AD8A-9D653DFB4895}.Debug|x64.Build.0 = Debug|x64
 		{42FD5634-DAE5-450A-AD8A-9D653DFB4895}.Release|x64.ActiveCfg = Release|x64
 		{42FD5634-DAE5-450A-AD8A-9D653DFB4895}.Release|x64.Build.0 = Release|x64
+		{A7874B4C-2CBD-4D5B-8390-70238F4085FB}.Debug|x64.ActiveCfg = Debug|x64
+		{A7874B4C-2CBD-4D5B-8390-70238F4085FB}.Debug|x64.Build.0 = Debug|x64
+		{A7874B4C-2CBD-4D5B-8390-70238F4085FB}.Release|x64.ActiveCfg = Release|x64
+		{A7874B4C-2CBD-4D5B-8390-70238F4085FB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

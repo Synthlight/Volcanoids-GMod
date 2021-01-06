@@ -1,25 +1,23 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
-using HarmonyLib;
+using Base_Mod;
+using GMod.Models;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GMod {
     [UsedImplicitly]
-    public class Plugin : GameMod {
-        public static           Config config      = new Config();
-        private static readonly string CONFIG_FILE = Path.Combine(AssemblyDirectory, "GMod.json");
+    public class Plugin : BaseGameMod {
+        protected override string ModName    { get; } = "GMod";
+        protected override bool   UseHarmony { get; } = true;
+        public static      Config config = new Config();
 
-        public override void Load() {
-            Debug.Log("GMod loaded.");
-
-            Assembly.LoadFrom(Path.Combine(AssemblyDirectory, "0Harmony.dll"));
-
+        protected override void Init() {
             try {
-                if (File.Exists(CONFIG_FILE)) {
-                    var json = File.ReadAllText(CONFIG_FILE);
+                if (File.Exists(ConfigFile)) {
+                    var json = File.ReadAllText(ConfigFile);
                     config = JsonConvert.DeserializeObject<Config>(json);
                 }
             } catch (Exception e) {
@@ -28,29 +26,18 @@ namespace GMod {
 
             try {
                 var json = JsonConvert.SerializeObject(config, Formatting.Indented);
-                File.WriteAllText(CONFIG_FILE, json);
+                File.WriteAllText(ConfigFile, json);
             } catch (Exception e) {
                 Debug.LogError(e.ToString());
             }
 
-            var harmony = new Harmony(GUID.Create().ToString());
-            harmony.PatchAll();
-
-            foreach (var patchedMethod in harmony.GetPatchedMethods()) {
-                Debug.Log($"Patched: {patchedMethod.DeclaringType?.FullName}:{patchedMethod}");
-            }
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public override void Unload() {
-        }
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            if (scene.name != "Island") return;
 
-        private static string AssemblyDirectory {
-            get {
-                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                var uri      = new UriBuilder(codeBase);
-                var path     = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(path);
-            }
+            DoAllIslandSceneLoadedPatches();
         }
     }
 }

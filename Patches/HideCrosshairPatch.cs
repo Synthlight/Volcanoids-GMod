@@ -7,7 +7,7 @@ using UnityEngine;
 namespace GMod.Patches {
     [HarmonyPatch]
     [UsedImplicitly]
-    public class HelpCrosshairUiPatch {
+    public class HideCrosshairPatch {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {

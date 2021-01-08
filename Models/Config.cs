@@ -12,5 +12,6 @@
         public int   segmentSizeMultiplier          = 1;
         public bool  disableAimSway                 = false;
         public bool  hideHelpIconNearCrosshair      = false;
+        public float oreAndIngotStackSizeMultiplier = 1f;
     }
 }

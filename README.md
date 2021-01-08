@@ -18,6 +18,7 @@ inventorySizeMultiplier | Default: 1.0<br>Multiplier on the inventory size. Affe
 segmentSizeMultiplier | Default: 1<br>Multiplier on the number of segments an engine will support.<br>**BEWARE** Once added, you can't remove a segment, and you can make them too long for the landing spot.
 disableAimSway | Default: false<br>Disables weapon sway when aiming.
 hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the question mark that appears near the crosshair.
+oreAndIngotStackSizeMultiplier | Default: 1.0<br>Multiplier on ores & ingots, and alloys.
 
 # Requirements
 - Volcanoids obviously.

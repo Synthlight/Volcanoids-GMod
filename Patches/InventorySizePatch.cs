@@ -14,26 +14,26 @@ namespace GMod.Patches {
                 inventory.SetPrivateField("m_capacity", (int) (inventory.GetPrivateField<Inventory, int>("m_capacity") * Plugin.config.inventorySizeMultiplier));
             }
         }
+    }
 
-        [HarmonyPatch]
+    [HarmonyPatch]
+    [UsedImplicitly]
+    public static class InventoryMaxCapacityPatch {
+        [HarmonyTargetMethod]
         [UsedImplicitly]
-        public class InventoryMaxCapacityPatch {
-            [HarmonyTargetMethod]
-            [UsedImplicitly]
-            public static MethodBase TargetMethod() {
-                return typeof(Inventory).GetProperty(nameof(Inventory.Capacity), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
-            }
+        public static MethodBase TargetMethod() {
+            return typeof(Inventory).GetProperty(nameof(Inventory.Capacity), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
+        }
 
-            [UsedImplicitly]
-            [HarmonyTranspiler]
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
-                foreach (var instruction in instructions) {
-                    if (instruction.operand?.Equals(128) ?? false) {
-                        instruction.operand = int.MaxValue;
-                    }
-
-                    yield return instruction;
+        [UsedImplicitly]
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
+            foreach (var instruction in instructions) {
+                if (instruction.operand?.Equals(128) ?? false) {
+                    instruction.operand = int.MaxValue;
                 }
+
+                yield return instruction;
             }
         }
     }

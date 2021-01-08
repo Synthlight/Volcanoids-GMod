@@ -7,7 +7,7 @@ using UnityEngine;
 namespace GMod.Patches {
     [HarmonyPatch]
     [UsedImplicitly]
-    public class InfiniteAmmoPatch1 {
+    public static class InfiniteAmmoPatch1 {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
@@ -42,7 +42,7 @@ namespace GMod.Patches {
 
     [HarmonyPatch]
     [UsedImplicitly]
-    public class InfiniteAmmoPatch2 {
+    public static class InfiniteAmmoPatch2 {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {

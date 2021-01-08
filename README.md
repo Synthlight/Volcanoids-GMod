@@ -19,6 +19,7 @@ segmentSizeMultiplier | Default: 1<br>Multiplier on the number of segments an en
 disableAimSway | Default: false<br>Disables weapon sway when aiming.
 hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the question mark that appears near the crosshair.
 oreAndIngotStackSizeMultiplier | Default: 1.0<br>Multiplier on ores & ingots, and alloys.
+changeTurretRecipes | Default: false<br>Changes the default turret recipes to use an equivalent number of Copper Gun Components instead of the guns themselves.
 
 # Requirements
 - Volcanoids obviously.

@@ -1,3 +1,4 @@
+using System.Linq;
 using Base_Mod.Models;
 using JetBrains.Annotations;
 
@@ -6,7 +7,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var itemDef in GameResources.Instance.Items) {
+            foreach (var itemDef in GameResources.Instance.Items.Where(item => item.MaxStack > 1)) {
                 itemDef.MaxStack = (int) (itemDef.MaxStack * Plugin.config.stackSizeMultiplier);
             }
         }

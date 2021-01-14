@@ -19,7 +19,7 @@ segmentSizeMultiplier | Default: 1<br>Multiplier on the number of segments an en
 disableAimSway | Default: false<br>Disables weapon sway when aiming.
 hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the question mark that appears near the crosshair.
 oreAndIngotStackSizeMultiplier | Default: 1.0<br>Multiplier on ores & ingots, and alloys.<br>Effect is accumulative with stackSizeMultiplier.
-stackSizeMultiplier | Default: 1.0<br>General stack size multiplier.<br>Effect is accumulative with oreAndIngotStackSizeMultiplier.
+stackSizeMultiplier | Default: 1.0<br>General stack size multiplier. (For items with stack sizes > 1.)<br>Effect is accumulative with oreAndIngotStackSizeMultiplier.
 changeTurretRecipes | Default: false<br>Changes the default turret recipes to use an equivalent number of Copper Gun Components instead of the guns themselves.
 
 # Requirements
@@ -27,7 +27,7 @@ changeTurretRecipes | Default: false<br>Changes the default turret recipes to us
 - [Harmony](https://github.com/pardeike/Harmony). The dll is included with the release zip for convenience.
 
 # Installation
-- Extract the release to the Volcanoids mod folder (`%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`) so `Auto-Sort.dll` is placed like this: `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods\GMod.dll`.
+- Extract the release to the Volcanoids mod folder (`%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`) so `GMod.dll` is placed like this: `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods\GMod.dll`.
 
 # Un-installation
 - Just remove the dll from `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`.

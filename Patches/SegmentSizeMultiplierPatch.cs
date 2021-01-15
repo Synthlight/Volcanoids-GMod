@@ -8,7 +8,7 @@ namespace GMod.Patches {
         [UsedImplicitly]
         public static void Patch() {
             foreach (var segmentItemDef in GameResources.Instance.Items.OfType<TrainEngineItemDefinition>()) {
-                segmentItemDef.SegmentCount *= Plugin.config.segmentSizeMultiplier;
+                segmentItemDef.SegmentCount = (int) (segmentItemDef.SegmentCount * Plugin.config.segmentSizeMultiplier);
             }
         }
     }

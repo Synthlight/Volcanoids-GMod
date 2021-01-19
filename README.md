@@ -20,7 +20,6 @@ disableAimSway | Default: false<br>Disables weapon sway when aiming.
 hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the question mark that appears near the crosshair.
 oreAndIngotStackSizeMultiplier | Default: 1.0<br>Multiplier on ores & ingots, and alloys.<br>Effect is accumulative with stackSizeMultiplier.
 stackSizeMultiplier | Default: 1.0<br>General stack size multiplier. (For items with stack sizes > 1.)<br>Effect is accumulative with oreAndIngotStackSizeMultiplier.
-changeTurretRecipes | Default: false<br>Changes the default turret recipes to use an equivalent number of Copper Gun Components instead of the guns themselves.
 
 # Requirements
 - Volcanoids obviously.

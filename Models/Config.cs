@@ -14,6 +14,5 @@
         public bool  hideHelpIconNearCrosshair      = false;
         public float oreAndIngotStackSizeMultiplier = 1f;
         public float stackSizeMultiplier            = 1f;
-        public bool  changeTurretRecipes            = false;
     }
 }

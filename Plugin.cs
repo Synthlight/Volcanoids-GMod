@@ -34,11 +34,9 @@ namespace GMod {
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        private bool onSceneLoadedDone;
-
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            if (scene.name != "Island" || onSceneLoadedDone) return;
-            onSceneLoadedDone = true;
+            if (scene.name != "Island") return;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
 
             DoAllIslandSceneLoadedPatches();
         }

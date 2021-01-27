@@ -4,6 +4,7 @@
         public bool  revealFullMap                  = false;
         public bool  disablePowerPlantStopThreshold = false;
         public float powerPerSecondMultiplier       = 1f;
+        public float powerEfficiencyMultiplier      = 1f;
         public float shipClaimHealthLevel           = 0.25f;
         public float radarRangeMultiplier           = 1f;
         public bool  infiniteStamina                = false;
@@ -15,5 +16,7 @@
         public float oreAndIngotStackSizeMultiplier = 1f;
         public float stackSizeMultiplier            = 1f;
         public float productionSpeedMultiplier      = 1f;
+        public float productionCostMultiplier       = 1f;
+        public float surfaceTravelSpeedMultiplier   = 1f;
     }
 }

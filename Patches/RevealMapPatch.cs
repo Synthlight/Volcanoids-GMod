@@ -25,7 +25,7 @@ namespace GMod.Patches {
         }
 
         private class PlayerCallback : ITrackingHandlerCallback<Player> {
-            public void OnAdded(Player instance) {
+            public void OnAdded(Player player) {
                 if (Plugin.config.revealFullMap) {
                     Island.Current.TryGetComponentSafe<MapMemory>()?.RevealAll();
                 }

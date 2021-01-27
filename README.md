@@ -22,7 +22,7 @@ hideHelpIconNearCrosshair | Default: false<br>When true, completely hides the qu
 oreAndIngotStackSizeMultiplier | Default: 1.0<br>Multiplier on ores & ingots, and alloys.<br>Effect is accumulative with stackSizeMultiplier.
 stackSizeMultiplier | Default: 1.0<br>General stack size multiplier. (For items with stack sizes > 1.)<br>Effect is accumulative with oreAndIngotStackSizeMultiplier.
 productionSpeedMultiplier | Default: 1.0<br>Production speed multiplier. Smaller is faster.
-productionCostMultiplier | Default: 1.0<br>Multiplier on the number of required ingredients for recipes. Affects both production & research & refinement.<br>A minimum of 1 is enforced for each ingredient.
+productionCostMultiplier | Default: 1.0<br>Multiplier on the number of required ingredients for recipes. Affects both production, research & refinement.<br>A minimum of 1 is enforced for each ingredient.
 surfaceTravelSpeedMultiplier | Default: 1.0<br>Affects how quickly the ship moves on the surface. i.e. how fast it goes up or down.
 
 # Requirements

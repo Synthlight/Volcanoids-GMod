@@ -18,5 +18,6 @@
         public float productionSpeedMultiplier      = 1f;
         public float productionCostMultiplier       = 1f;
         public float surfaceTravelSpeedMultiplier   = 1f;
+        public float turretFireRateMultiplier       = 1f;
     }
 }

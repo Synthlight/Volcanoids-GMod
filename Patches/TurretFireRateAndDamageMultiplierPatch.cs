@@ -5,7 +5,7 @@ using Base_Mod.Models;
 using JetBrains.Annotations;
 
 namespace GMod.Patches {
-    public static class TurretFireRateMultiplierPatch {
+    public static class TurretFireRateAndDamageMultiplierPatch {
         private static readonly List<GUID> TURRET_AMMO_ITEMS = new List<GUID> {
             GUID.Parse("f46cdfb659dd5f3428f5a1c9c1fe7d32"), // Pistol Turret Ammo
             GUID.Parse("cdd3ca2c103709d4395f67d08bef56f9"), // Shotgun Turret Ammo
@@ -30,6 +30,7 @@ namespace GMod.Patches {
             foreach (var ammoDef in GameResources.Instance.Items.Where(def => TURRET_AMMO_ITEMS.Contains(def.AssetId)).Cast<AmmoDefinition>()) {
                 var stats = ammoDef.AmmoStats;
                 stats.RateOfFire  *= Plugin.config.turretFireRateMultiplier;
+                stats.Damage      *= Plugin.config.turretDamageMultiplier;
                 ammoDef.AmmoStats =  stats;
             }
 

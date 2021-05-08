@@ -25,6 +25,7 @@ productionSpeedMultiplier | Default: 1.0<br>Production speed multiplier. Smaller
 productionCostMultiplier | Default: 1.0<br>Multiplier on the number of required ingredients for recipes. Affects both production, research & refinement.<br>A minimum of 1 is enforced for each ingredient.
 surfaceTravelSpeedMultiplier | Default: 1.0<br>Affects how quickly the ship moves on the surface. i.e. how fast it goes up or down.
 turretFireRateMultiplier | Default: 1.0<br>Changes the turret's rate of fire. Make sure they have enough ammo in storage!
+turretDamageMultiplier | Default: 1.0<br>Changes the turret's damage.
 playerFireRateMultiplier | Default: 1.0<br>Changes the player's rate of fire. You will bleed ammo.
 playerRunSpeedMultiplier | Default: 1.0<br>Modifies the player's run speed.
 

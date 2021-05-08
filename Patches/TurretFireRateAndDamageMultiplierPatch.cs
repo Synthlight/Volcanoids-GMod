@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Base_Mod;
 using Base_Mod.Models;
 using JetBrains.Annotations;
 
 namespace GMod.Patches {
     public static class TurretFireRateAndDamageMultiplierPatch {
+        private static readonly FieldInfo TURRET_M_WEAPON                            = typeof(Turret).GetField("m_weapon", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly FieldInfo WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME = typeof(WeaponReloaderOnlineCargo).GetField("m_reloadTime", BindingFlags.NonPublic | BindingFlags.Instance);
+
         private static readonly List<GUID> TURRET_AMMO_ITEMS = new List<GUID> {
             GUID.Parse("f46cdfb659dd5f3428f5a1c9c1fe7d32"), // Pistol Turret Ammo
             GUID.Parse("cdd3ca2c103709d4395f67d08bef56f9"), // Shotgun Turret Ammo
@@ -35,32 +39,11 @@ namespace GMod.Patches {
             }
 
             foreach (var turret in GameResources.Instance.Modules.Where(def => TURRET_MODULES.Contains(def.AssetId)).WithComponent<Turret>()) {
-                var reloader = (WeaponReloaderInfinite) turret.m_weapon.Reloader;
+                var reloader = (WeaponReloaderOnlineCargo) turret.GetPrivateField<Weapon>(TURRET_M_WEAPON).Reloader;
 
-                var reloadCooldown = reloader.GetPrivateField<WeaponReloaderInfinite, float>("m_reloadCooldown");
-                reloader.SetPrivateField("m_reloadCooldown", reloadCooldown / Plugin.config.turretFireRateMultiplier);
-
-                var reloadTime = reloader.GetPrivateField<WeaponReloaderInfinite, float>("m_reloadTime");
-                reloader.SetPrivateField("m_reloadTime", reloadTime / Plugin.config.turretFireRateMultiplier);
+                var reloadTime = reloader.GetPrivateField<float>(WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME);
+                reloader.SetPrivateField(WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME, reloadTime / Plugin.config.turretFireRateMultiplier);
             }
         }
-
-        // To remove the enforced reload time minimum of 0.001. Probably not needed.
-        //[HarmonyPatch]
-        //[UsedImplicitly]
-        //public static class TurretReloadTimePatch {
-        //    [HarmonyTargetMethod]
-        //    [UsedImplicitly]
-        //    public static MethodBase TargetMethod() {
-        //        return typeof(WeaponReloaderInfinite).GetProperty(nameof(WeaponReloaderInfinite.ReloadTime), BindingFlags.Public | BindingFlags.Instance)?.GetGetMethod();
-        //    }
-
-        //    [HarmonyPrefix]
-        //    [UsedImplicitly]
-        //    public static bool Prefix(ref float __result, ref float ___m_reloadTime) {
-        //        __result = ___m_reloadTime;
-        //        return false;
-        //    }
-        //}
     }
 }

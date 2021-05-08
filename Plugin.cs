@@ -5,13 +5,12 @@ using GMod.Models;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GMod {
     [UsedImplicitly]
     public class Plugin : BaseGameMod {
-        protected override string ModName    { get; } = "GMod";
-        protected override bool   UseHarmony { get; } = true;
+        protected override string ModName    => "GMod";
+        protected override bool   UseHarmony => true;
         public static      Config config = new Config();
 
         protected override void Init() {
@@ -31,14 +30,7 @@ namespace GMod {
                 Debug.LogError(e.ToString());
             }
 
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            if (scene.name != "Island") return;
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-
-            DoAllIslandSceneLoadedPatches();
+            base.Init();
         }
     }
 }

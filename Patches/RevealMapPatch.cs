@@ -17,8 +17,6 @@ namespace GMod.Patches {
             TrackingHandler<Player>.Subscribe(playerCallback, true);
         }
 
-        [OnUnloaded]
-        [UsedImplicitly]
         public static void UnPatch() {
             TrackingHandler<Player>.Unsubscribe(playerCallback, true);
             playerCallback = null;

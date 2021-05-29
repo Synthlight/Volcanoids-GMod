@@ -14,9 +14,11 @@ namespace GMod {
         public static      Config config = new Config();
 
         protected override void Init() {
+            var configFile = GetConfigFile();
+
             try {
-                if (File.Exists(ConfigFile)) {
-                    var json = File.ReadAllText(ConfigFile);
+                if (File.Exists(configFile)) {
+                    var json = File.ReadAllText(configFile);
                     config = JsonConvert.DeserializeObject<Config>(json);
                 }
             } catch (Exception e) {
@@ -25,7 +27,7 @@ namespace GMod {
 
             try {
                 var json = JsonConvert.SerializeObject(config, Formatting.Indented);
-                File.WriteAllText(ConfigFile, json);
+                File.WriteAllText(configFile, json);
             } catch (Exception e) {
                 Debug.LogError(e.ToString());
             }

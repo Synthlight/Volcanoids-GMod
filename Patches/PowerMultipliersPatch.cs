@@ -1,6 +1,7 @@
 using Base_Mod;
 using Base_Mod.Models;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace GMod.Patches {
     public static class PowerMultipliersPatch {

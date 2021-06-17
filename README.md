@@ -3,6 +3,12 @@ This is a mod to configure a few various things in-game.
 
 The first Volcanoids is run with this mod installed, it will create a file called `GMod.json` in `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`. (Assuming the file doesn't exist in the first place.)
 
+# Requirements
+- Volcanoids obviously.
+
+# Installation
+- See https://github.com/Synthlight/Volcanoids-Modding-Wiki/wiki#installing-mods
+
 # Config
 Option | Description
 --- | ---
@@ -28,13 +34,3 @@ turretFireRateMultiplier | Default: 1.0<br>Changes the turret's rate of fire. Ma
 turretDamageMultiplier | Default: 1.0<br>Changes the turret's damage.
 playerFireRateMultiplier | Default: 1.0<br>Changes the player's rate of fire. You will bleed ammo.
 playerRunSpeedMultiplier | Default: 1.0<br>Modifies the player's run speed.
-
-# Requirements
-- Volcanoids obviously.
-- [Harmony](https://github.com/pardeike/Harmony). The dll is included with the release zip for convenience.
-
-# Installation
-- Extract the release to the Volcanoids mod folder (`%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`) so `GMod.dll` is placed like this: `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods\GMod.dll`.
-
-# Un-installation
-- Just remove the dll from `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`.

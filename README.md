@@ -1,7 +1,8 @@
 ﻿# Volcanoids GMod
 This is a mod to configure a few various things in-game.
 
-The first Volcanoids is run with this mod installed, it will create a file called `GMod.json` in `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\Mods`. (Assuming the file doesn't exist in the first place.)
+The first Volcanoids is run with this mod installed, it will create a file called `GMod.json` in `%LOCALAPPDATA%Low\Volcanoid\Volcanoids\PersistentModData\_GMod`. (Assuming the file doesn't exist in the first place.)<br>
+You do not need to create the directory yourself. If This does not appear, you either did not install the mod right, or didn't run the game first.
 
 # Requirements
 - Volcanoids obviously.

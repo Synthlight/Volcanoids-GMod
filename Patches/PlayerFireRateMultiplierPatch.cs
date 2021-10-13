@@ -23,7 +23,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var ammoDef in GameResources.Instance.Items.Where(def => PLAYER_AMMO_ITEMS.Contains(def.AssetId)).Cast<AmmoDefinition>()) {
+            foreach (var ammoDef in RuntimeAssetDatabase.Get<ItemDefinition>().Where(def => PLAYER_AMMO_ITEMS.Contains(def.AssetId)).Cast<AmmoDefinition>()) {
                 var stats = ammoDef.AmmoStats;
                 stats.RateOfFire  *= Plugin.config.playerFireRateMultiplier;
                 ammoDef.AmmoStats =  stats;

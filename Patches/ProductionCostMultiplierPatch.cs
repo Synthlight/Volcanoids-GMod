@@ -7,7 +7,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var recipeDef in GameResources.Instance.Recipes.Where(recipeDef => recipeDef.Inputs.Length > 0)) {
+            foreach (var recipeDef in RuntimeAssetDatabase.Get<Recipe>().Where(recipeDef => recipeDef.Inputs.Length > 0)) {
                 for (var i = 0; i < recipeDef.Inputs.Length; i++) {
                     // It's a struct, so, copy, edit, assign back.
                     var input = recipeDef.Inputs[i];

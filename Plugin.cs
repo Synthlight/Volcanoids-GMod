@@ -9,7 +9,6 @@ using UnityEngine;
 namespace GMod {
     [UsedImplicitly]
     public class Plugin : BaseGameMod {
-        protected override string ModName    => "GMod";
         protected override bool   UseHarmony => true;
         public static      Config config = new Config();
 

@@ -31,14 +31,14 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var ammoDef in GameResources.Instance.Items.Where(def => TURRET_AMMO_ITEMS.Contains(def.AssetId)).Cast<AmmoDefinition>()) {
+            foreach (var ammoDef in RuntimeAssetDatabase.Get<ItemDefinition>().Where(def => TURRET_AMMO_ITEMS.Contains(def.AssetId)).Cast<AmmoDefinition>()) {
                 var stats = ammoDef.AmmoStats;
                 stats.RateOfFire  *= Plugin.config.turretFireRateMultiplier;
                 stats.Damage      *= Plugin.config.turretDamageMultiplier;
                 ammoDef.AmmoStats =  stats;
             }
 
-            foreach (var turret in GameResources.Instance.Modules.Where(def => TURRET_MODULES.Contains(def.AssetId)).WithComponent<Turret>()) {
+            foreach (var turret in RuntimeAssetDatabase.Get<ModuleItemDefinition>().Where(def => TURRET_MODULES.Contains(def.AssetId)).WithComponent<Turret>()) {
                 var reloader = (WeaponReloaderOnlineCargo) turret.GetPrivateField<Weapon>(TURRET_M_WEAPON).Reloader;
 
                 var reloadTime = reloader.GetPrivateField<float>(WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME);

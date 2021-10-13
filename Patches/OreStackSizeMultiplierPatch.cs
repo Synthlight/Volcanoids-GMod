@@ -48,7 +48,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var itemDef in GameResources.Instance.Items.Where(item => ORES_AND_INGOTS.Contains(item.AssetId))) {
+            foreach (var itemDef in RuntimeAssetDatabase.Get<ItemDefinition>().Where(item => ORES_AND_INGOTS.Contains(item.AssetId))) {
                 itemDef.MaxStack = (int) (itemDef.MaxStack * Plugin.config.oreAndIngotStackSizeMultiplier);
             }
         }

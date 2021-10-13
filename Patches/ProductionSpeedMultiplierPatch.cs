@@ -7,7 +7,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var recipeDef in GameResources.Instance.Recipes.Where(recipeDef => recipeDef.ProductionTime > 0)) {
+            foreach (var recipeDef in RuntimeAssetDatabase.Get<Recipe>().Where(recipeDef => recipeDef.ProductionTime > 0)) {
                 recipeDef.ProductionTime *= Plugin.config.productionSpeedMultiplier;
             }
         }

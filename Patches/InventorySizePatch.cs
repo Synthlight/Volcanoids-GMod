@@ -12,7 +12,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var inventory in GameResources.Instance.Items.WithComponent<Inventory>()) {
+            foreach (var inventory in RuntimeAssetDatabase.Get<ItemDefinition>().WithComponent<Inventory>()) {
                 inventory.SetPrivateField("m_capacity", (int) (inventory.GetPrivateField<int>(INVENTORY_M_CAPACITY) * Plugin.config.inventorySizeMultiplier));
             }
         }

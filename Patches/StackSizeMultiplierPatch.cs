@@ -7,7 +7,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var itemDef in GameResources.Instance.Items.Where(item => item.MaxStack > 1)) {
+            foreach (var itemDef in RuntimeAssetDatabase.Get<ItemDefinition>().Where(item => item.MaxStack > 1)) {
                 itemDef.MaxStack = (int) (itemDef.MaxStack * Plugin.config.stackSizeMultiplier);
             }
         }

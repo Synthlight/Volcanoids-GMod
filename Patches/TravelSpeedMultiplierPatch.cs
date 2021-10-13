@@ -1,4 +1,3 @@
-using System.Linq;
 using Base_Mod.Models;
 using JetBrains.Annotations;
 
@@ -7,7 +6,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var tread in GameResources.Instance.Items.OfType<TrainTracksItemDefinition>()) {
+            foreach (var tread in RuntimeAssetDatabase.Get<TrainTracksItemDefinition>()) {
                 tread.SurfaceMovementSpeed *= Plugin.config.surfaceTravelSpeedMultiplier;
             }
         }

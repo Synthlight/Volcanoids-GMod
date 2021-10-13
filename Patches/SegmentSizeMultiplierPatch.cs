@@ -1,4 +1,3 @@
-using System.Linq;
 using Base_Mod.Models;
 using JetBrains.Annotations;
 
@@ -7,7 +6,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var segmentItemDef in GameResources.Instance.Items.OfType<TrainEngineItemDefinition>()) {
+            foreach (var segmentItemDef in RuntimeAssetDatabase.Get<TrainEngineItemDefinition>()) {
                 segmentItemDef.SegmentCount = (int) (segmentItemDef.SegmentCount * Plugin.config.segmentSizeMultiplier);
             }
         }

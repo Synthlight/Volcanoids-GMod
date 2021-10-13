@@ -8,7 +8,7 @@ namespace GMod.Patches {
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
-            foreach (var powerPlant in GameResources.Instance.Items.WithComponent<PowerPlant>()) {
+            foreach (var powerPlant in RuntimeAssetDatabase.Get<ItemDefinition>().WithComponent<PowerPlant>()) {
                 powerPlant.EnergyPerSecond *= Plugin.config.powerPerSecondMultiplier;
                 powerPlant.FuelEfficiency  *= Plugin.config.powerEfficiencyMultiplier;
 

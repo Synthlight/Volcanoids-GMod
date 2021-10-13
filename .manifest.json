@@ -1,4 +1,7 @@
 {
     "LoadGroup": 0,
-    "Version": "1.12"
+    "Version": "1.12",
+    "UniqueModId": "GMod",
+    "Title": "GMod (Miscellaneous Multipliers)",
+    "MultiplayerMode": 0
 }

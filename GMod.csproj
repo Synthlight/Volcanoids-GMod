@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>net46</TargetFramework>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<Platforms>x64</Platforms>
@@ -12,20 +12,17 @@
 		<DebugType>full</DebugType>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="HarmonyX" Version="2.4.2"/>
-	</ItemGroup>
-	<ItemGroup>
 		<ProjectReference Include="..\Base-Mod\Base-Mod.csproj">
 			<Private>false</Private>
 		</ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
-		<Reference Include="Assembly-CSharp">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Assembly-CSharp.dll</HintPath>
+		<Reference Include="Volcanoids">
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Volcanoids.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="com.unity.multiplayer-hlapi.Runtime">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+		<Reference Include="Unity.MultiplayerHLAPI.Runtime">
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Unity.MultiplayerHLAPI.Runtime.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="Newtonsoft.Json">

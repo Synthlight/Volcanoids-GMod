@@ -1,0 +1,63 @@
+﻿This is a mod to configure a few various things in-game.
+
+The first Volcanoids is run with this mod activated, it will create a file called '[b]GMod.json[/b]' in:
+[code]%LOCALAPPDATA%Low\Volcanoid\Volcanoids\PersistentModData\GMod[/code]
+(Assuming the file doesn't exist in the first place.)
+
+You do not need to create the directory yourself. If this does not appear, the mod isn't active.
+
+[h1]Config[/h1]
+[table]
+[tr][th]Option[/th][th]Description[/th][/tr]
+[tr][td]coreSlotMultiplier[/td][td]Default: 1.0
+Multiplier on the max core slots available.[/td][/tr]
+[tr][td]revealFullMap[/td][td]Default: false
+If true, will reveal the whole map when you load the game.[/td][/tr]
+[tr][td]disablePowerPlantStopThreshold[/td][td]Default: false
+Power plants by default shut off at 100% energy, and don't turn on till 90% energy. This saves coal.
+If you want then on all the time, set this to true.[/td][/tr]
+[tr][td]powerPerSecondMultiplier[/td][td]Default: 1.0
+Affects the power output of things. e.g. if a plant outputs +10 power, then a 2.0 value results in +20 power.[/td][/tr]
+[tr][td]powerEfficiencyMultiplier[/td][td]Default: 1.0
+Affects how much power one single coal is converted into. Higher numbers provide greater efficiency.[/td][/tr]
+[tr][td]shipClaimHealthLevel[/td][td]Default: 0.25
+This is the health level the ship must be at to be claimable.[/td][/tr]
+[tr][td]radarRangeMultiplier[/td][td]Default: 1.0
+Multiplier on the radar range of ships. Higher and you can see more deposits/items around on the map.[/td][/tr]
+[tr][td]infiniteStamina[/td][td]Default: false
+Infinite stamina.[/td][/tr]
+[tr][td]infiniteAmmo[/td][td]Default: false
+Infinite ammo.[/td][/tr]
+[tr][td]inventorySizeMultiplier[/td][td]Default: 1.0
+Multiplier on the inventory size. Affects everything with an inventory. (Players, storage modules, chests, etc.)[/td][/tr]
+[tr][td]segmentSizeMultiplier[/td][td]Default: 1.0
+Multiplier on the number of segments an engine will support.
+[b]BEWARE[/b] Once added, you can't remove a segment, and you can make them too long for the landing spot.[/td][/tr]
+[tr][td]disableAimSway[/td][td]Default: false
+Disables weapon sway when aiming.[/td][/tr]
+[tr][td]hideHelpIconNearCrosshair[/td][td]Default: false
+When true, completely hides the question mark that appears near the crosshair.[/td][/tr]
+[tr][td]oreAndIngotStackSizeMultiplier[/td][td]Default: 1.0
+Multiplier on ores & ingots, and alloys.
+Effect is accumulative with stackSizeMultiplier.[/td][/tr]
+[tr][td]stackSizeMultiplier[/td][td]Default: 1.0
+General stack size multiplier. (For items with stack sizes > 1.)
+Effect is accumulative with oreAndIngotStackSizeMultiplier.[/td][/tr]
+[tr][td]productionSpeedMultiplier[/td][td]Default: 1.0
+Production speed multiplier. Smaller is faster.[/td][/tr]
+[tr][td]productionCostMultiplier[/td][td]Default: 1.0
+Multiplier on the number of required ingredients for recipes. Affects both production, research & refinement.
+A minimum of 1 is enforced for each ingredient.[/td][/tr]
+[tr][td]surfaceTravelSpeedMultiplier[/td][td]Default: 1.0
+Affects how quickly the ship moves on the surface. i.e. how fast it goes up or down.[/td][/tr]
+[tr][td]turretFireRateMultiplier[/td][td]Default: 1.0
+Changes the turret's rate of fire. Make sure they have enough ammo in storage![/td][/tr]
+[tr][td]turretDamageMultiplier[/td][td]Default: 1.0
+Changes the turret's damage.[/td][/tr]
+[tr][td]playerFireRateMultiplier[/td][td]Default: 1.0
+Changes the player's rate of fire. You will bleed ammo.[/td][/tr]
+[tr][td]playerRunSpeedMultiplier[/td][td]Default: 1.0
+Modifies the player's run speed.[/td][/tr]
+
+
+[url=https://github.com/Synthlight/Volcanoids-GMod]Source[/url]

@@ -11,7 +11,7 @@ namespace GMod.Patches {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
-            return typeof(WeaponReloaderAmmo).GetMethod(nameof(WeaponReloaderAmmo.LoadAmmo), BindingFlags.Public | BindingFlags.Instance);
+            return typeof(WeaponReloaderDefault).GetMethod(nameof(WeaponReloaderDefault.LoadAmmo), BindingFlags.Public | BindingFlags.Instance, null, new[] {typeof(Inventory), typeof(AmmoDefinition), typeof(int)}, null);
         }
 
         [HarmonyPrefix]
@@ -46,7 +46,7 @@ namespace GMod.Patches {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
-            return typeof(WeaponReloaderAmmo).GetMethod(nameof(WeaponReloaderAmmo.UnloadAmmo), BindingFlags.Public | BindingFlags.Instance);
+            return typeof(WeaponReloaderDefault).GetMethod(nameof(WeaponReloaderDefault.UnloadAmmo), BindingFlags.Public | BindingFlags.Instance);
         }
 
         [HarmonyPrefix]

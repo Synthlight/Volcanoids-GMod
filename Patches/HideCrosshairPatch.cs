@@ -11,7 +11,7 @@ namespace GMod.Patches {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
-            return typeof(HelpCrosshairUi).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance);
+            return typeof(HelpCrosshairUi).GetMethod(nameof(HelpCrosshairUi.Update), BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         [HarmonyPostfix]

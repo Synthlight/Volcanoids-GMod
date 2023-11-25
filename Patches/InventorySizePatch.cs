@@ -7,13 +7,14 @@ using JetBrains.Annotations;
 
 namespace GMod.Patches {
     public static class InventorySizePatch {
-        private static readonly FieldInfo INVENTORY_M_CAPACITY = typeof(Inventory).GetField("m_capacity", BindingFlags.NonPublic | BindingFlags.Instance);
-
         [OnIslandSceneLoaded]
         [UsedImplicitly]
         public static void Patch() {
             foreach (var inventory in RuntimeAssetDatabase.Get<ItemDefinition>().WithComponent<Inventory>()) {
-                inventory.SetPrivateField("m_capacity", (int) (inventory.GetPrivateField<int>(INVENTORY_M_CAPACITY) * Plugin.config.inventorySizeMultiplier));
+                inventory.m_capacity = (int) (inventory.m_capacity * Plugin.config.inventorySizeMultiplier);
+            }
+            foreach (var coreItemDef in RuntimeAssetDatabase.Get<TrainCoreItemDefinition>()) {
+                coreItemDef.InventoryCapacity = (int) (coreItemDef.InventoryCapacity * Plugin.config.inventorySizeMultiplier);
             }
         }
     }

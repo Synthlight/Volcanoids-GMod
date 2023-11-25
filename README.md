@@ -35,3 +35,5 @@ turretFireRateMultiplier | Default: 1.0<br>Changes the turret's rate of fire. Ma
 turretDamageMultiplier | Default: 1.0<br>Changes the turret's damage.
 playerFireRateMultiplier | Default: 1.0<br>Changes the player's rate of fire. You will bleed ammo.
 playerRunSpeedMultiplier | Default: 1.0<br>Modifies the player's run speed.
+claimWithAnyCore | Default: false<br>When true, you can claim any ship with any core.
+reloadSpeedMultiplier | Default: 1.0<br>Modifies reload time. Higher values are slower.

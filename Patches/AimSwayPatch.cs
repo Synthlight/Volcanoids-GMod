@@ -11,7 +11,7 @@ namespace GMod.Patches {
         [HarmonyTargetMethod]
         [UsedImplicitly]
         public static MethodBase TargetMethod() {
-            return typeof(ToolCameraTravel).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance);
+            return typeof(ToolCameraTravel).GetMethod(nameof(ToolCameraTravel.Update), BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
         [HarmonyPrefix]

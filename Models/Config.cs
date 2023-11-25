@@ -22,5 +22,7 @@
         public float turretDamageMultiplier         = 1f;
         public float playerFireRateMultiplier       = 1f;
         public float playerRunSpeedMultiplier       = 1f;
+        public bool  claimWithAnyCore               = false;
+        public float reloadSpeedMultiplier          = 1f;
     }
 }

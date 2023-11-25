@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net46</TargetFramework>
+		<TargetFramework>netstandard21</TargetFramework>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<Platforms>x64</Platforms>
@@ -10,6 +10,8 @@
 		<Company>None</Company>
 		<RootNamespace>GMod</RootNamespace>
 		<DebugType>full</DebugType>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Base-Mod\Base-Mod.csproj">
@@ -18,7 +20,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="Volcanoids">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\Volcanoids.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\publicized_assemblies\Volcanoids_publicized.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="Unity.MultiplayerHLAPI.Runtime">
@@ -39,6 +41,10 @@
 		</Reference>
 		<Reference Include="UnityEngine">
 			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\UnityEngine.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Volcanoids\Volcanoids_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">

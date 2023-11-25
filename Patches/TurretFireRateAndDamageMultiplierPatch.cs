@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Base_Mod;
 using Base_Mod.Models;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace GMod.Patches {
     public static class TurretFireRateAndDamageMultiplierPatch {
-        private static readonly FieldInfo TURRET_M_WEAPON                            = typeof(Turret).GetField("m_weapon", BindingFlags.NonPublic | BindingFlags.Instance);
-        private static readonly FieldInfo WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME = typeof(WeaponReloaderOnlineCargo).GetField("m_reloadTime", BindingFlags.NonPublic | BindingFlags.Instance);
-
         private static readonly List<GUID> TURRET_AMMO_ITEMS = new List<GUID> {
             GUID.Parse("f46cdfb659dd5f3428f5a1c9c1fe7d32"), // Pistol Turret Ammo
             GUID.Parse("cdd3ca2c103709d4395f67d08bef56f9"), // Shotgun Turret Ammo
@@ -39,10 +36,14 @@ namespace GMod.Patches {
             }
 
             foreach (var turret in RuntimeAssetDatabase.Get<ModuleItemDefinition>().Where(def => TURRET_MODULES.Contains(def.AssetId)).WithComponent<Turret>()) {
-                var reloader = (WeaponReloaderOnlineCargo) turret.GetPrivateField<Weapon>(TURRET_M_WEAPON).Reloader;
-
-                var reloadTime = reloader.GetPrivateField<float>(WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME);
-                reloader.SetPrivateField(WEAPON_RELOADER_ONLINE_CARGO_M_RELOAD_TIME, reloadTime / Plugin.config.turretFireRateMultiplier);
+                switch (turret.Weapon?.Reloader) {
+                    case WeaponReloaderAmmo reloaderAmmo:
+                        reloaderAmmo.Definition.ReloadTime = reloaderAmmo.ReloadDuration / Plugin.config.turretFireRateMultiplier;
+                        break;
+                    default:
+                        Debug.LogError($"Unable to cast reloader of type `{turret.Weapon?.Reloader?.GetType()}` for turret: {turret.name}");
+                        break;
+                }
             }
         }
     }

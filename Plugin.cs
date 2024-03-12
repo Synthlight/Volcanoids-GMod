@@ -6,32 +6,32 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace GMod {
-    [UsedImplicitly]
-    public class Plugin : BaseGameMod {
-        protected override bool   UseHarmony => true;
-        public static      Config config = new Config();
+namespace GMod;
 
-        protected override void Init() {
-            var configFile = GetConfigFile();
+[UsedImplicitly]
+public class Plugin : BaseGameMod {
+    protected override bool   UseHarmony => true;
+    public static      Config config = new();
 
-            try {
-                if (File.Exists(configFile)) {
-                    var json = File.ReadAllText(configFile);
-                    config = JsonConvert.DeserializeObject<Config>(json);
-                }
-            } catch (Exception e) {
-                Debug.LogError(e.ToString());
+    protected override void Init() {
+        var configFile = GetConfigFile();
+
+        try {
+            if (File.Exists(configFile)) {
+                var json = File.ReadAllText(configFile);
+                config = JsonConvert.DeserializeObject<Config>(json);
             }
-
-            try {
-                var json = JsonConvert.SerializeObject(config, Formatting.Indented);
-                File.WriteAllText(configFile, json);
-            } catch (Exception e) {
-                Debug.LogError(e.ToString());
-            }
-
-            base.Init();
+        } catch (Exception e) {
+            Debug.LogError(e.ToString());
         }
+
+        try {
+            var json = JsonConvert.SerializeObject(config, Formatting.Indented);
+            File.WriteAllText(configFile, json);
+        } catch (Exception e) {
+            Debug.LogError(e.ToString());
+        }
+
+        base.Init();
     }
 }

@@ -2,35 +2,35 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace GMod.Patches {
-    public static class RevealMapPatch {
-        private static PlayerCallback playerCallback;
+namespace GMod.Patches;
 
-        [OnIslandSceneLoaded]
-        [UsedImplicitly]
-        public static void Patch() {
-            if (playerCallback != null) {
-                UnPatch();
-            }
+public static class RevealMapPatch {
+    private static PlayerCallback playerCallback;
 
-            playerCallback = new PlayerCallback();
-            TrackingHandler<Player>.Subscribe(playerCallback, true);
+    [OnIslandSceneLoaded]
+    [UsedImplicitly]
+    public static void Patch() {
+        if (playerCallback != null) {
+            UnPatch();
         }
 
-        public static void UnPatch() {
-            TrackingHandler<Player>.Unsubscribe(playerCallback, true);
-            playerCallback = null;
+        playerCallback = new();
+        TrackingHandler<Player>.Subscribe(playerCallback, true);
+    }
+
+    public static void UnPatch() {
+        TrackingHandler<Player>.Unsubscribe(playerCallback, true);
+        playerCallback = null;
+    }
+
+    private class PlayerCallback : ITrackingHandlerCallback<Player> {
+        public void OnAdded(Player player) {
+            if (Plugin.config.revealFullMap) {
+                Island.Current.TryGetComponentSafe<MapMemory>()?.RevealAll();
+            }
         }
 
-        private class PlayerCallback : ITrackingHandlerCallback<Player> {
-            public void OnAdded(Player player) {
-                if (Plugin.config.revealFullMap) {
-                    Island.Current.TryGetComponentSafe<MapMemory>()?.RevealAll();
-                }
-            }
-
-            public void OnRemoved(Player instance) {
-            }
+        public void OnRemoved(Player instance) {
         }
     }
 }

@@ -4,25 +4,25 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace GMod.Patches {
-    [HarmonyPatch]
-    [UsedImplicitly]
-    public static class AimSwayPatch {
-        [HarmonyTargetMethod]
-        [UsedImplicitly]
-        public static MethodBase TargetMethod() {
-            return typeof(ToolCameraTravel).GetMethod(nameof(ToolCameraTravel.Update), BindingFlags.NonPublic | BindingFlags.Instance);
-        }
+namespace GMod.Patches;
 
-        [HarmonyPrefix]
-        [UsedImplicitly]
-        public static bool Prefix() {
-            try {
-                return !Plugin.config.disableAimSway;
-            } catch (Exception e) {
-                Debug.LogError(e.ToString());
-                return true;
-            }
+[HarmonyPatch]
+[UsedImplicitly]
+public static class AimSwayPatch {
+    [HarmonyTargetMethod]
+    [UsedImplicitly]
+    public static MethodBase TargetMethod() {
+        return typeof(ToolCameraTravel).GetMethod(nameof(ToolCameraTravel.Update), BindingFlags.NonPublic | BindingFlags.Instance);
+    }
+
+    [HarmonyPrefix]
+    [UsedImplicitly]
+    public static bool Prefix() {
+        try {
+            return !Plugin.config.disableAimSway;
+        } catch (Exception e) {
+            Debug.LogError(e.ToString());
+            return true;
         }
     }
 }

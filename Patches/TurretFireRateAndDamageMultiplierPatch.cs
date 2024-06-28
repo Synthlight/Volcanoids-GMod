@@ -36,7 +36,7 @@ public static class TurretFireRateAndDamageMultiplierPatch {
             ammoDef.AmmoStats =  stats;
         }
 
-        foreach (var turret in RuntimeAssetDatabase.Get<ModuleItemDefinition>().Where(def => TURRET_MODULES.Contains(def.AssetId)).WithComponent<Turret>()) {
+        foreach (var turret in RuntimeAssetDatabase.Get<ItemDefinition>().Where(def => TURRET_MODULES.Contains(def.AssetId)).WithComponent<Turret>()) {
             switch (turret.Weapon?.Reloader) {
                 case WeaponReloaderAmmo reloaderAmmo:
                     reloaderAmmo.Definition.ReloadTime = reloaderAmmo.ReloadDuration / Plugin.config.turretFireRateMultiplier;
